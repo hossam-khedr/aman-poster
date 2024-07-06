@@ -1,0 +1,84 @@
+name: supabase_test
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.4.3 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+
+  cupertino_icons: ^1.0.6
+  supabase_flutter: ^2.5.6
+  flutter_bloc: ^8.1.6
+  get_it: ^7.7.0
+  injectable: ^2.4.2
+  dartz: ^0.10.1
+  svg_flutter:
+  fluttertoast: ^8.2.6
+  another_flushbar: ^1.12.30
+  device_preview: ^1.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  injectable_generator: ^2.6.1
+  build_runner: ^2.4.11
+  flutter_launcher_icons: ^0.13.1
+flutter_launcher_icons:
+  image_path: "assets/png/Group 1.png"
+  android: true
+  ios: true
+
+
+
+  flutter_lints: ^3.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/images/
+    - assets/svg/
+    - assets/png/
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  fonts:
+     - family: marwa
+       fonts:
+         - asset: assets/fonts/marwa.ttf
+           weight: 400
+         - asset: assets/fonts/marwa-bold.ttf
+           weight: 700
+         - asset: assets/fonts/marwa-medium.ttf
+           weight: 500
+
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
