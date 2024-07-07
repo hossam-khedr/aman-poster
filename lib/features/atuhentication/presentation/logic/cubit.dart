@@ -25,7 +25,7 @@ class AuthenticationCubit extends Cubit<AuthenticationStates> {
   bool isPagCharacterDone = false;
   bool isSpecialCharacterDone = false;
   bool isNumberDone = false;
-  bool isPasswordShow = false;
+  bool isPasswordShow = true;
 
 void passwordShow(){
   isPasswordShow = !isPasswordShow;

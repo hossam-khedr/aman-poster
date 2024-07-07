@@ -14,7 +14,7 @@ class AuthRepository {
       String email, String password) async {
     try {
       log('Start auth repo signIn');
-      await dataSource.signIn(email, password);
+       await dataSource.signIn(email, password);
       log('End auth repo signIn');
       return Right(null);
     } on AuthException catch (error) {
