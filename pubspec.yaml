@@ -26,6 +26,7 @@ dependencies:
   fluttertoast: ^8.2.6
   another_flushbar: ^1.12.30
   device_preview: ^1.2.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

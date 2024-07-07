@@ -6,6 +6,7 @@ import 'package:supabase_test/core/helper/app_states/pub_up_success_state.dart';
 import 'package:supabase_test/core/route_generator/routes.dart';
 import 'package:supabase_test/core/widgets/button_widget.dart';
 import 'package:supabase_test/features/atuhentication/presentation/logic/states.dart';
+import 'package:supabase_test/features/atuhentication/presentation/widgets/password_input.dart';
 
 import '../../../../../core/app_responsev/app_responsev.dart';
 import '../../../../../core/constants/app_strings.dart';
@@ -75,18 +76,7 @@ class _SignUpBodyState extends State<SignUpBody> {
           HintWidget(
             hintText: AppStrings.password,
           ),
-          TextFormFieldWidget(
-            controller: context.read<AuthenticationCubit>().passwordController,
-            keyboardType: TextInputType.visiblePassword,
-            obscureText: context.read<AuthenticationCubit>().isPasswordShow,
-            suffixIcon:  PasswordShowOrNotShow(),
-            validator: (value) {
-              if (!isPasswordValid(value)) {
-                return AppStrings.passwordErrorMassage;
-              }
-              return null;
-            },
-          ),
+          PasswordInput(),
           HintWidget(
             hintText: AppStrings.provinceName,
           ),

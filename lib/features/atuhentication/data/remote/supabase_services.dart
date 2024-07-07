@@ -1,15 +1,22 @@
 import 'dart:developer';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_test/core/constants/constants.dart';
 import 'package:supabase_test/features/atuhentication/data/data_source.dart';
 import 'package:supabase_test/features/atuhentication/data/models/user_model.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../../../core/chach/chach.dart';
 class SupaBaseServices implements DataSource{
   final supaBase = Supabase.instance.client;
   @override
   Future signIn(String email, String password) async{
     log('Start signIn SupaBaseServices');
-    await supaBase.auth.signInWithPassword(password: password,email: email);
+  final response =   await supaBase.auth.signInWithPassword(password: password,email: email);
+  if(response.user?.id != null){
+   await CacheHelper.setData(Constants.userId, response.user!.id);
+    log('User id is Saving in storage');
+  }
     log('End signIn SupaBaseServices');
 
   }

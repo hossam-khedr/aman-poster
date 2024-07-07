@@ -4,5 +4,6 @@ class Constants{
   static const String lightTheme = 'light';
   static const String darkTheme = 'dark';
   static const String appFontFamily= 'marwa';
+  static const String userId= 'userId';
 
 }

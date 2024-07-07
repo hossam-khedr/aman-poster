@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:supabase_test/features/atuhentication/presentation/widgets/password_input.dart';
 import 'package:svg_flutter/svg.dart';
 
 import '../../../../../core/app_responsev/app_responsev.dart';
@@ -77,20 +78,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                     height: AppResponsive.verticalSpace(context, 30),
                   ),
                   HintWidget(hintText: AppStrings.updatePassword),
-                  TextFormFieldWidget(
-                    controller:
-                        context.read<AuthenticationCubit>().passwordController,
-                    obscureText:
-                        context.read<AuthenticationCubit>().isPasswordShow,
-                    keyboardType: TextInputType.visiblePassword,
-                    validator: (value) {
-                      if (!isPasswordValid(value)) {
-                        return AppStrings.passwordErrorMassage;
-                      }
-                      return null;
-                    },
-                    suffixIcon: PasswordShowOrNotShow(),
-                  ),
+                 PasswordInput(),
                   SizedBox(
                     height: AppResponsive.verticalSpace(context, 50),
                   ),
@@ -268,3 +256,5 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     );
   }
 }
+
+

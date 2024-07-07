@@ -10,6 +10,7 @@ import 'package:supabase_test/core/widgets/logo_widgets.dart';
 import 'package:supabase_test/features/atuhentication/presentation/logic/cubit.dart';
 import 'package:supabase_test/features/atuhentication/presentation/logic/states.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:supabase_test/features/atuhentication/presentation/widgets/password_input.dart';
 import '../../../../../core/constants/app_strings.dart';
 import '../../../../../core/widgets/button_widget.dart';
 import '../../../../../core/widgets/text_form_field_widget.dart';
@@ -53,18 +54,7 @@ class SignInBody extends StatelessWidget {
           HintWidget(
             hintText: AppStrings.password,
           ),
-          TextFormFieldWidget(
-            controller: context.read<AuthenticationCubit>().passwordController,
-            keyboardType: TextInputType.visiblePassword,
-            obscureText: context.read<AuthenticationCubit>().isPasswordShow,
-            suffixIcon: PasswordShowOrNotShow(),
-            validator: (value){
-              if(!isPasswordValid(value)){
-                return AppStrings.passwordErrorMassage;
-              }
-              return null;
-            },
-          ),
+          PasswordInput(),
           const ForgotPassword(),
           SizedBox(
             height: AppResponsive.verticalSpace(context, 30),
