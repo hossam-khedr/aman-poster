@@ -14,25 +14,25 @@ class PasswordInput extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final authCubit = getIt<AuthenticationCubit>();
-    return BlocProvider.value(
-      value: authCubit,
+   // final authCubit = getIt<AuthenticationCubit>();
+    return BlocProvider(
+      create: (context)=>getIt<AuthenticationCubit>(),
       child: BlocBuilder<AuthenticationCubit, AuthenticationStates>(
         builder: (context,state){
           return TextFormFieldWidget(
-            controller: authCubit.passwordController,
+            controller: context.read<AuthenticationCubit>().passwordController,
             keyboardType: TextInputType.visiblePassword,
-            obscureText: authCubit.isPasswordShow,
+            obscureText: context.read<AuthenticationCubit>().isPasswordShow,
             suffixIcon:  TextButton(
               onPressed: () {
-                authCubit.passwordShow();
+                context.read<AuthenticationCubit>().passwordShow();
               },
               child: Text(
-                authCubit.isPasswordShow == true
+                context.read<AuthenticationCubit>().isPasswordShow == true
                     ? AppStrings.show
                     : AppStrings.dontShow,
                 style: TextStyle(
-                  color: authCubit.isPasswordShow == true
+                  color: context.read<AuthenticationCubit>().isPasswordShow == true
                       ? Colors.orange
                       : Colors.grey,
                   fontWeight: FontWeight.w900,

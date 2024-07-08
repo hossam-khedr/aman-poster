@@ -4,8 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:supabase_test/core/helper/bloc_observer.dart';
 import 'package:supabase_test/core/route_generator/app_router.dart';
 import 'package:supabase_test/core/theming/theming.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'core/chach/chach.dart';
+import 'core/cache_helper/cache_helper.dart';
 import 'core/constants/constants.dart';
 import 'core/route_generator/routes.dart';
 
@@ -19,6 +18,7 @@ void main() async {
   await CacheHelper.initCacheHelper();
   runApp(const MyApp());
 }
+var userId = CacheHelper.getData(Constants.userId);
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
      theme: getApplicationTheme(Constants.lightTheme),
-     initialRoute:CacheHelper.getData(Constants.userId)!=null? Routes.main:Routes.welcome,
+     initialRoute:userId!=null? Routes.main:Routes.signIn,
       onGenerateRoute: AppRouter.generateRoutes,
     );
   }

@@ -5,8 +5,10 @@ class TextFormFieldWidget extends StatelessWidget {
   final TextEditingController controller;
   final bool? readOnly;
   final bool obscureText;
+  final String? hintText;
 
   final Widget? suffixIcon;
+  final Widget? prefixIcon;
   final void Function()? onTap;
   final String? Function(String?)? validator;
 
@@ -16,15 +18,19 @@ class TextFormFieldWidget extends StatelessWidget {
     required this.controller,
     this.readOnly,
     this.onTap,
-    this.suffixIcon, this.validator,required this.obscureText,
+    this.suffixIcon,
+    this.validator,
+    required this.obscureText,
+    this.hintText,
+    this.prefixIcon,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
-      obscureText: obscureText ,
-      validator:validator ,
+      obscureText: obscureText,
+      validator: validator,
       keyboardType: keyboardType,
       cursorColor: Colors.black12,
       onTap: onTap,
@@ -32,8 +38,8 @@ class TextFormFieldWidget extends StatelessWidget {
       decoration: InputDecoration(
         suffixIcon: suffixIcon,
         suffixIconColor: Colors.black12,
-
-
+        hintText: hintText,
+        prefixIcon: prefixIcon,
       ),
     );
   }

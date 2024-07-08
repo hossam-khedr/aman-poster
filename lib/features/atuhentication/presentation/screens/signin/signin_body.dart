@@ -41,8 +41,8 @@ class SignInBody extends StatelessWidget {
             controller: context.read<AuthenticationCubit>().emailController,
             keyboardType: TextInputType.emailAddress,
             obscureText: false,
-            validator: (value){
-              if(!isEmailValid(value)){
+            validator: (value) {
+              if (!isEmailValid(value)) {
                 return AppStrings.emailErrorMassage;
               }
               return null;
@@ -54,22 +54,55 @@ class SignInBody extends StatelessWidget {
           HintWidget(
             hintText: AppStrings.password,
           ),
-          PasswordInput(),
+          BlocBuilder<AuthenticationCubit, AuthenticationStates>(
+            builder: (context, state) {
+              return TextFormFieldWidget(
+                controller:
+                    context.read<AuthenticationCubit>().passwordController,
+                keyboardType: TextInputType.visiblePassword,
+                obscureText: context.read<AuthenticationCubit>().isPasswordShow,
+                suffixIcon: TextButton(
+                  onPressed: () {
+                    context.read<AuthenticationCubit>().passwordShow();
+                  },
+                  child: Text(
+                    context.read<AuthenticationCubit>().isPasswordShow == true
+                        ? AppStrings.show
+                        : AppStrings.dontShow,
+                    style: TextStyle(
+                      color:
+                          context.read<AuthenticationCubit>().isPasswordShow ==
+                                  true
+                              ? Colors.orange
+                              : Colors.grey,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+                validator: (value) {
+                  if (!isPasswordValid(value)) {
+                    return AppStrings.passwordErrorMassage;
+                  }
+                  return null;
+                },
+              );
+            },
+          ),
           const ForgotPassword(),
           SizedBox(
             height: AppResponsive.verticalSpace(context, 30),
           ),
           BlocListener<AuthenticationCubit, AuthenticationStates>(
-            listenWhen: (previous, current){
+            listenWhen: (previous, current) {
               return previous != current;
             },
             listener: (context, state) {
               if (state is AuthenticationLoadingState) {
-                  showPobUpLoadingState(context);
+                showPobUpLoadingState(context);
               }
               if (state is AuthenticationErrorState) {
                 Navigator.pop(context);
-                  showPubUpErrorState(context, state.errorMessage);
+                showPubUpErrorState(context, state.errorMessage);
               }
               if (state is AuthenticationSuccessState) {
                 Navigator.pushReplacementNamed(context, Routes.main);
@@ -80,10 +113,13 @@ class SignInBody extends StatelessWidget {
               width: 0,
               title: AppStrings.signIn,
               onPressed: () {
-                if(context.read<AuthenticationCubit>().formKey.currentState!.validate()){
+                if (context
+                    .read<AuthenticationCubit>()
+                    .formKey
+                    .currentState!
+                    .validate()) {
                   context.read<AuthenticationCubit>().signIn();
                 }
-
               },
             ),
           ),
