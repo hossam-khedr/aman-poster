@@ -16,6 +16,7 @@ ThemeData ligthTheme(){
   return ThemeData(
     fontFamily: Constants.appFontFamily,
     appBarTheme: const AppBarTheme(
+      backgroundColor:Colors.white,
       elevation: 0,
       systemOverlayStyle: SystemUiOverlayStyle(
         statusBarColor: Colors.white,

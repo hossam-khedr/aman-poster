@@ -9,8 +9,12 @@ class CacheHelper{
  await  preferences.setString(key, value);
   }
   static Future<String?> getData(String key)async{
-  await preferences.getString(key);
+ return await preferences.getString(key);
 
+  }
+
+  static Future<bool> removeSingleValue(String key)async{
+ return await preferences.remove(key);
   }
 
 }

@@ -4,7 +4,6 @@ class AppStrings{
   static String unDefinedRoute = '';
   static String report = 'التقرير اليومي';
   static String setting = 'الاعدادات';
-  static String search = 'بحث عن ملصق';
   static String home = 'الملصقات';
   static String appBarTitleMainScreen = 'بيان عملاء الملصق الالكتروني';
   static String appBarTitleInputScreen = 'ادخل بيانات الملصق';
@@ -18,6 +17,7 @@ class AppStrings{
   static String iHaveAnAccount = ' لدي حساب?';
   static String joinNow = ' انشاء حساب جديد';
   static String signIn = 'تسجيل دخول';
+  static String signOut = 'تسجيل خروج';
   static String noteIdText = 'تسجيل الدخول من خلال الرقم القومي';
   static String email = 'اسم الحساب';
   static String password = 'كلمة السر';
@@ -55,4 +55,6 @@ class AppStrings{
   static String successRecoverPasswordMassage ='هتوصلك رسالة تاكيد علي الاميل فعلها عشان تعرف تغير كلمة السر';
   static String updatePasswordSuccessMessage ='تم تغير كلمة السر بنجاح';
   static String updatePassword ='كلمة السر الجديده';
+  static String searchOfPoster ='ابحث عن ملصق';
+  static String exit ='خروج';
 }

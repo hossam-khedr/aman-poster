@@ -78,7 +78,37 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
                     height: AppResponsive.verticalSpace(context, 30),
                   ),
                   HintWidget(hintText: AppStrings.updatePassword),
-                 PasswordInput(),
+                  BlocBuilder<AuthenticationCubit, AuthenticationStates>(
+                    builder: (context,state){
+                      return TextFormFieldWidget(
+                        controller: context.read<AuthenticationCubit>().passwordController,
+                        keyboardType: TextInputType.visiblePassword,
+                        obscureText: context.read<AuthenticationCubit>().isPasswordShow,
+                        suffixIcon:  TextButton(
+                          onPressed: () {
+                            context.read<AuthenticationCubit>().passwordShow();
+                          },
+                          child: Text(
+                            context.read<AuthenticationCubit>().isPasswordShow == true
+                                ? AppStrings.show
+                                : AppStrings.dontShow,
+                            style: TextStyle(
+                              color: context.read<AuthenticationCubit>().isPasswordShow == true
+                                  ? Colors.orange
+                                  : Colors.grey,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (!isPasswordValid(value)) {
+                            return AppStrings.passwordErrorMassage;
+                          }
+                          return null;
+                        },
+                      );
+                    },
+                  ),
                   SizedBox(
                     height: AppResponsive.verticalSpace(context, 50),
                   ),
