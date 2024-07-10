@@ -1,16 +1,16 @@
 class AppStrings{
   static const String welcomeMassage = 'لو معملتش حساب قبل كده اعمل حساب جديد  ولازم يكون الايميل حقيقي عشان هتوصلك رسالة تحقق لو الاميل مش حقيقي مش هتعرف تعمل تسجيل دخول شكرا.';
-  static String addElement = 'اضافة ملصق';
+  static String addNewPoster = 'أضافة ملصق جديد';
   static String unDefinedRoute = '';
   static String report = 'التقرير اليومي';
   static String setting = 'الاعدادات';
   static String home = 'الملصقات';
   static String appBarTitleMainScreen = 'بيان عملاء الملصق الالكتروني';
   static String appBarTitleInputScreen = 'ادخل بيانات الملصق';
-  static String numberOfCar = 'رقم اللوحات';
+  static String numberOfCar = 'رقم اللوحات المعدنيه';
   static String typeOfCar = 'نوع المركبه';
   static String surrealThePoster = 'سريال الملصق';
-  static String clintPhone = 'تليفون العميل';
+  static String clintPhone = 'تليفون صاحب الرخصه';
   static String updateElement = 'تعديل ملصق';
   static String welcomeLoginMassage = 'سجل دخولك لمواصلة العمل';
   static String dontHaveAccount = 'ليس لدي حساب?';
@@ -57,4 +57,5 @@ class AppStrings{
   static String updatePassword ='كلمة السر الجديده';
   static String searchOfPoster ='ابحث عن ملصق';
   static String exit ='خروج';
+  static String clintName ='اسم صاحب الرخصه';
 }

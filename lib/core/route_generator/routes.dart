@@ -5,4 +5,5 @@ class Routes{
   static const String forgotPassword = '/forgotPassword';
   static const String updatePassword = '/updatePassword';
   static const String main = '/nain';
+  static const String addPoster = '/addPoster';
 }

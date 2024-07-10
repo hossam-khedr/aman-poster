@@ -11,6 +11,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final Widget? prefixIcon;
   final void Function()? onTap;
   final String? Function(String?)? validator;
+ final void Function(String)? onChanged;
 
   const TextFormFieldWidget({
     super.key,
@@ -22,7 +23,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.validator,
     required this.obscureText,
     this.hintText,
-    this.prefixIcon,
+    this.prefixIcon, this.onChanged,
   });
 
   @override
@@ -31,6 +32,7 @@ class TextFormFieldWidget extends StatelessWidget {
       controller: controller,
       obscureText: obscureText,
       validator: validator,
+      onChanged: onChanged,
       keyboardType: keyboardType,
       cursorColor: Colors.black12,
       onTap: onTap,
