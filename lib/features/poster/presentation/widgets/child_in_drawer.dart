@@ -3,6 +3,8 @@ import 'package:supabase_test/core/app_responsev/app_responsev.dart';
 import 'package:supabase_test/core/constants/app_strings.dart';
 import 'package:supabase_test/features/poster/presentation/widgets/item_in_child_in_drawer.dart';
 
+import '../../../../core/route_generator/routes.dart';
+
 class ChildInDrawer extends StatefulWidget {
   const ChildInDrawer({super.key});
 
@@ -42,9 +44,11 @@ class _ChildInDrawerState extends State<ChildInDrawer> {
           decoration: BoxDecoration(),
         ),
         ItemInChildInDrawer(
-          title: AppStrings.addElement,
+          title: AppStrings.addNewPoster,
           icon: Icons.add,
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, Routes.addPoster);
+          },
         ),
         ItemInChildInDrawer(
           title: AppStrings.report,

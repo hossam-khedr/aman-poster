@@ -10,6 +10,7 @@ import 'package:supabase_test/features/opening/screens/welcome/welcome_screen.da
 import 'package:supabase_test/features/poster/presentation/screens/main/main_screen.dart';
 
 import '../../features/atuhentication/presentation/screens/update_password/update_password_screen.dart';
+import '../../features/poster/presentation/screens/add_poster/add_poster_screen.dart';
 
 class AppRouter {
   static Route generateRoutes(RouteSettings setting) {
@@ -51,6 +52,10 @@ class AppRouter {
       case Routes.main:
         return MaterialPageRoute(
           builder: (_) => const MainScreen(),
+        );
+      case Routes.addPoster:
+        return MaterialPageRoute(
+          builder: (_) => const AddPosterScreen(),
         );
 
       default:
