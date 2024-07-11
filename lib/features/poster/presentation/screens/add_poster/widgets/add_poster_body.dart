@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:supabase_test/core/app_responsev/app_responsev.dart';
 import 'package:supabase_test/core/constants/app_strings.dart';
+import 'package:supabase_test/core/helper/app_states/pub_up_error_state.dart';
+import 'package:supabase_test/core/helper/app_states/pub_up_loading_state.dart';
+import 'package:supabase_test/core/route_generator/routes.dart';
 import 'package:supabase_test/core/widgets/button_widget.dart';
 import 'package:supabase_test/core/widgets/text_form_field_widget.dart';
 import 'package:supabase_test/features/atuhentication/presentation/widgets/hint_text.dart';
+import 'package:supabase_test/features/poster/presentation/logic/states.dart';
 
+import '../../../logic/cubit.dart';
 import 'clint_type.dart';
 import 'license_information.dart';
 import 'license_type.dart';
@@ -15,10 +22,6 @@ class AddPosterBody extends StatefulWidget {
   @override
   State<AddPosterBody> createState() => _AddPosterBodyState();
 }
-
-var clintNameController = TextEditingController();
-var clintMobileController = TextEditingController();
-var posterNumberController = TextEditingController();
 
 class _AddPosterBodyState extends State<AddPosterBody> {
   @override
@@ -41,7 +44,7 @@ class _AddPosterBodyState extends State<AddPosterBody> {
         ),
         TextFormFieldWidget(
           hintText: AppStrings.clintName,
-          controller: clintNameController,
+          controller: context.read<PosterCubit>().clintNameController,
           obscureText: false,
           keyboardType: TextInputType.name,
         ),
@@ -50,7 +53,7 @@ class _AddPosterBodyState extends State<AddPosterBody> {
         ),
         TextFormFieldWidget(
           hintText: AppStrings.clintPhone,
-          controller: clintMobileController,
+          controller: context.read<PosterCubit>().clintMobileController,
           obscureText: false,
           keyboardType: TextInputType.phone,
         ),
@@ -59,7 +62,7 @@ class _AddPosterBodyState extends State<AddPosterBody> {
         ),
         TextFormFieldWidget(
           hintText: AppStrings.surrealThePoster,
-          controller: posterNumberController,
+          controller: context.read<PosterCubit>().posterNumberController,
           obscureText: false,
           keyboardType: TextInputType.number,
         ),
@@ -79,11 +82,36 @@ class _AddPosterBodyState extends State<AddPosterBody> {
         SizedBox(
           height: AppResponsive.verticalSpace(context, 20),
         ),
-        ButtonWidget(
-          width: 0,
-          height: 20,
-          title: AppStrings.addNewPoster,
-          onPressed: (){},
+        BlocListener<PosterCubit, PosterStates>(
+          listener: (context, state) {
+            if (state is PosterLoadingState) {
+              showPobUpLoadingState(context);
+            }
+            if (state is PosterErrorState) {
+              showPubUpErrorState(context, state.errorMsg);
+            }
+            if (state is PosterSuccessState) {
+              Navigator.pop(context);
+              Fluttertoast.showToast(
+                msg: AppStrings.addedPosterSuccess,
+                backgroundColor: Colors.green,
+              );
+              Future.delayed(Duration(milliseconds: 2),(){
+                Navigator.pushReplacementNamed(context, Routes.main);
+              });
+            }
+          },
+          listenWhen: (previous, current) {
+            return previous != current;
+          },
+          child: ButtonWidget(
+            width: 0,
+            height: 20,
+            title: AppStrings.addNewPoster,
+            onPressed: () {
+              context.read<PosterCubit>().addPoster();
+            },
+          ),
         )
       ],
     );

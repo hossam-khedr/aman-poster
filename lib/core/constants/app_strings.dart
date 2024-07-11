@@ -58,4 +58,7 @@ class AppStrings{
   static String searchOfPoster ='ابحث عن ملصق';
   static String exit ='خروج';
   static String clintName ='اسم صاحب الرخصه';
+  static String owner ='المالك';
+  static String agent ='الوكيل';
+  static String addedPosterSuccess ='تم اضافة الملصق';
 }
