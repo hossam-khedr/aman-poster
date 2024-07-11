@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:supabase_test/core/di.dart';
 import 'package:supabase_test/core/helper/bloc_observer.dart';
 import 'package:supabase_test/core/route_generator/app_router.dart';
 import 'package:supabase_test/core/theming/theming.dart';
@@ -16,6 +17,7 @@ void main() async {
   );
   Bloc.observer = MyBlocObserver();
   await CacheHelper.initCacheHelper();
+  await initPosterModule();
   runApp(const MyApp());
 }
 var userId = CacheHelper.getData(Constants.userId);

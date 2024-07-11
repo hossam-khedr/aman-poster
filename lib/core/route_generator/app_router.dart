@@ -7,6 +7,7 @@ import 'package:supabase_test/features/atuhentication/presentation/screens/forgo
 import 'package:supabase_test/features/atuhentication/presentation/screens/signin/signin_screen.dart';
 import 'package:supabase_test/features/atuhentication/presentation/screens/signup/signup_screen.dart';
 import 'package:supabase_test/features/opening/screens/welcome/welcome_screen.dart';
+import 'package:supabase_test/features/poster/presentation/logic/cubit.dart';
 import 'package:supabase_test/features/poster/presentation/screens/main/main_screen.dart';
 
 import '../../features/atuhentication/presentation/screens/update_password/update_password_screen.dart';
@@ -45,7 +46,7 @@ class AppRouter {
       case Routes.updatePassword:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (_)=>getIt<AuthenticationCubit>(),
+            create: (_) => getIt<AuthenticationCubit>(),
             child: const UpdatePasswordScreen(),
           ),
         );
@@ -55,7 +56,10 @@ class AppRouter {
         );
       case Routes.addPoster:
         return MaterialPageRoute(
-          builder: (_) => const AddPosterScreen(),
+          builder: (_) => BlocProvider(
+            create: (_)=>getIt<PosterCubit>(),
+            child: const AddPosterScreen(),
+          ),
         );
 
       default:
