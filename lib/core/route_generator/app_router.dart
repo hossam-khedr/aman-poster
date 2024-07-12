@@ -6,6 +6,7 @@ import 'package:supabase_test/features/atuhentication/presentation/logic/cubit.d
 import 'package:supabase_test/features/atuhentication/presentation/screens/forgot_password/forgot_passwod_screen.dart';
 import 'package:supabase_test/features/atuhentication/presentation/screens/signin/signin_screen.dart';
 import 'package:supabase_test/features/atuhentication/presentation/screens/signup/signup_screen.dart';
+import 'package:supabase_test/features/opening/screens/splash/splash_screen.dart';
 import 'package:supabase_test/features/opening/screens/welcome/welcome_screen.dart';
 import 'package:supabase_test/features/poster/presentation/logic/cubit.dart';
 import 'package:supabase_test/features/poster/presentation/screens/main/main_screen.dart';
@@ -19,6 +20,10 @@ class AppRouter {
       case Routes.welcome:
         return MaterialPageRoute(
           builder: (_) => const WelcomeScreen(),
+        );
+      case Routes.splash:
+        return MaterialPageRoute(
+          builder: (_) => const SplashScreen(),
         );
       case Routes.signIn:
         initAuthModule();

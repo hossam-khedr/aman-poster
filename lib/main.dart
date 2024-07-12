@@ -20,7 +20,7 @@ void main() async {
   await initPosterModule();
   runApp(const MyApp());
 }
-var userId = CacheHelper.getData(Constants.userId);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
      theme: getApplicationTheme(Constants.lightTheme),
-     initialRoute:userId!=null? Routes.main:Routes.signIn,
+     initialRoute:Routes.splash,
       onGenerateRoute: AppRouter.generateRoutes,
     );
   }
