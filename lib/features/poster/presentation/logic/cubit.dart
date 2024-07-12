@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -29,11 +30,24 @@ class PosterCubit extends Cubit<PosterStates> {
     'توك توك',
   ];
 
+  // final StreamController<ClintTypeChangeState> _controller = StreamController<ClintTypeChangeState>();
+
+  /* void dispose() {
+    _controller.close();
+  }*/
+
+  /* void updateState(ClintTypeChangeState newState) {
+    if (!_controller.isClosed) {
+      _controller.add(newState);
+    }
+  }*/
   void changeClintType(String? value) {
     clintTypeGroupValue = value!;
+    // updateState(ClintTypeChangeState());
     emit(ClintTypeChangeState());
   }
 
+//bool isClosed = false;
   void changeLicenseType(String? value) {
     licenseTypeInitialValue = value!;
     emit(LicenseTypeChangeState());
@@ -60,5 +74,19 @@ class PosterCubit extends Cubit<PosterStates> {
       emit(PosterErrorState(e.toString()));
     }
     log('end add poster poster cubit');
+  }
+
+  Future<List<PosterModel>> getPosters() async {
+    List<PosterModel> posters = [];
+    log('start getPosters poster cubit');
+    try {
+      emit(PosterLoadingState());
+       posters = await posterRepo.getPosters();
+      emit(GetPostersSuccessState(posters));
+    } catch (error) {
+      emit(PosterErrorState(error.toString()));
+    }
+    log('end getPosters poster cubit');
+    return posters;
   }
 }

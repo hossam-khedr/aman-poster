@@ -52,12 +52,15 @@ class AppRouter {
         );
       case Routes.main:
         return MaterialPageRoute(
-          builder: (_) => const MainScreen(),
+          builder: (_) => BlocProvider(
+            create: (_)=>getIt<PosterCubit>()..getPosters(),
+            child: const MainScreen(),
+          ),
         );
       case Routes.addPoster:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (_)=>getIt<PosterCubit>(),
+            create: (_) => getIt<PosterCubit>(),
             child: const AddPosterScreen(),
           ),
         );

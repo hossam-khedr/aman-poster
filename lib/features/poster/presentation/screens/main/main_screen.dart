@@ -26,9 +26,9 @@ class _MainScreenState extends State<MainScreen> {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: AppResponsive.horizontalPadding(context, 30),
-              vertical: AppResponsive.verticalPadding(context, 40)
+            padding:  EdgeInsets.symmetric(
+              horizontal: AppResponsive.horizontalPadding(context, 20),
+              vertical: AppResponsive.horizontalPadding(context, 30),
             ),
             child: MainBody(),
           ),
