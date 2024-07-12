@@ -61,4 +61,6 @@ class AppStrings{
   static String owner ='المالك';
   static String agent ='الوكيل';
   static String addedPosterSuccess ='تم اضافة الملصق';
+  static String clintType ='المستلم';
+  static String licenseType ='نوع المركبه';
 }

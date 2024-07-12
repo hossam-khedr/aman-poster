@@ -13,4 +13,15 @@ await dataBase.from('posters').insert(posterModel.toJson());
 log('end add poster SupabaseServices');
   }
 
+  @override
+  Future<List<PosterModel>> getPosters()async {
+    log('start get posters SupabaseServices');
+    List<PosterModel> posters = [];
+    var response = await dataBase.from('posters').select('*') ;
+    print(response);
+     posters = response.map((poster)=>PosterModel.fromJson(poster)).toList();
+    log('end get posters SupabaseServices');
+     return posters;
+  }
+
 }
